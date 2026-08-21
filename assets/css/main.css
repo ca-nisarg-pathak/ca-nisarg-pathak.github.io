@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Nisarg Pathak & Co — shared stylesheet entry point.
+
+   Every page links this file, then its own page stylesheet:
+     <link rel="stylesheet" href="assets/css/main.css">
+     <link rel="stylesheet" href="assets/css/pages/home.css">
+
+   Order matters: tokens define the variables, base resets, layout builds the
+   page chrome, components sit on top. Page files override any of it.
+   ========================================================================== */
+
+@import url('core/tokens.css');
+@import url('core/base.css');
+@import url('core/layout.css');
+@import url('core/components.css');

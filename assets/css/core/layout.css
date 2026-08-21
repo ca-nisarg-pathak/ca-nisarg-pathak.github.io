@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Layout — page chrome shared by every page: nav, section scaffolding,
+   footer, floating WhatsApp button.
+   ========================================================================== */
+
+/* --- Nav ----------------------------------------------------------------- */
+
+nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px var(--gutter);
+  background:rgba(11,27,43,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-soft);
+  transition:padding .3s ease;
+}
+
+.logo{
+  font-family:var(--font-display);
+  font-size:1.25rem;
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+.logo span{color:var(--brass);}
+
+.nav-links{display:flex; gap:36px; align-items:center;}
+.nav-links a{
+  font-size:0.85rem;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--ivory-muted);
+  position:relative;
+  padding-bottom:4px;
+  transition:color .25s ease;
+}
+.nav-links a:hover{color:var(--ivory);}
+.nav-links a::after{
+  content:'';
+  position:absolute; left:0; bottom:0;
+  width:0; height:1px;
+  background:var(--brass);
+  transition:width .3s ease;
+}
+.nav-links a:hover::after{width:100%;}
+
+.nav-cta{
+  border:1px solid var(--brass);
+  padding:9px 20px !important;
+  border-radius:var(--radius);
+  color:var(--brass) !important;
+}
+.nav-cta:hover{background:var(--brass); color:var(--navy) !important;}
+.nav-cta::after{display:none;}
+
+.hamburger{
+  display:none; flex-direction:column; gap:5px;
+  cursor:pointer; background:none; border:none; padding:4px;
+}
+.hamburger span{width:24px; height:1px; background:var(--ivory);}
+
+/* --- Sections ------------------------------------------------------------ */
+
+section{padding:var(--section-y) var(--gutter);}
+
+.section-inner{max-width:var(--max-width); margin:0 auto;}
+
+.section-head{
+  display:flex; justify-content:space-between; align-items:flex-end;
+  gap:40px; margin-bottom:64px;
+  border-bottom:1px solid var(--line-soft);
+  padding-bottom:28px;
+}
+.section-head h2{font-size:clamp(1.8rem,3.4vw,2.8rem);}
+.section-head p{max-width:380px; color:var(--ivory-soft); font-size:0.95rem;}
+
+/* Sections rendered on the ivory paper background. */
+.section--paper{background:var(--ivory); color:var(--charcoal);}
+.section--paper .section-head{border-color:var(--line-dark);}
+.section--paper .section-head p{color:var(--ink-soft);}
+
+/* --- Footer -------------------------------------------------------------- */
+
+footer{
+  background:var(--navy-2);
+  border-top:1px solid var(--line);
+  padding:90px var(--gutter) 40px;
+}
+
+.footer-grid{
+  display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:60px;
+  max-width:var(--max-width); margin:0 auto;
+  padding-bottom:60px; border-bottom:1px solid var(--line-soft);
+}
+.footer-brand .logo{margin-bottom:16px;}
+.footer-brand p{color:rgba(245,241,232,0.55); max-width:320px; font-size:0.92rem;}
+
+.footer-col h5{
+  font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em;
+  color:var(--brass); margin-bottom:20px; font-family:var(--font-mono);
+}
+.footer-col a, .footer-col p{
+  display:block; color:rgba(245,241,232,0.65); font-size:0.92rem; margin-bottom:12px;
+  transition:color .25s ease;
+}
+.footer-col a:hover{color:var(--brass-light);}
+
+.footer-bottom{
+  max-width:var(--max-width); margin:0 auto; padding-top:28px;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  font-size:0.8rem; color:var(--ivory-faint);
+}
+
+/* --- Floating WhatsApp --------------------------------------------------- */
+
+.wa-float{
+  position:fixed; bottom:28px; right:28px; z-index:90;
+  width:56px; height:56px; border-radius:50%;
+  background:var(--emerald); border:1px solid var(--brass);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ivory); font-size:1.4rem;
+  box-shadow:0 8px 24px rgba(0,0,0,0.35);
+  transition:transform .3s ease;
+}
+.wa-float:hover{transform:scale(1.08);}
+
+/* --- Responsive ---------------------------------------------------------- */
+
+@media (max-width:900px){
+  section{padding:var(--section-y-sm) var(--gutter);}
+
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+
+  /* Toggled by js/modules/nav.js */
+  .nav-links.is-open{
+    display:flex; position:fixed; top:var(--nav-height); left:0; right:0;
+    background:var(--navy-2); flex-direction:column; align-items:flex-start;
+    gap:18px; padding:24px 6%;
+    border-bottom:1px solid var(--line);
+  }
+
+  .footer-grid{grid-template-columns:1fr; gap:36px;}
+}

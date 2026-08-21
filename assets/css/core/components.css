@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Components — reusable, page-agnostic pieces. Anything used on more than
+   one page (or likely to be, e.g. on the portal / payment pages) lives here.
+   ========================================================================== */
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.btn-primary{
+  display:inline-block;
+  background:var(--brass);
+  color:var(--navy);
+  padding:15px 32px;
+  font-size:0.9rem;
+  letter-spacing:0.04em;
+  border-radius:var(--radius);
+  font-weight:500;
+  transition:all .3s ease;
+  border:1px solid var(--brass);
+  cursor:pointer;
+  font-family:var(--font-body);
+}
+.btn-primary:hover{background:transparent; color:var(--brass);}
+
+.btn-ghost{
+  display:inline-block;
+  padding:15px 32px;
+  font-size:0.9rem;
+  letter-spacing:0.04em;
+  border:1px solid rgba(245,241,232,0.3);
+  border-radius:var(--radius);
+  transition:all .3s ease;
+  cursor:pointer;
+  background:none;
+  color:inherit;
+  font-family:var(--font-body);
+}
+.btn-ghost:hover{border-color:var(--ivory);}
+
+/* --- Statement strip (the four hero figures) ----------------------------- */
+
+.statement-strip{
+  position:relative; z-index:2;
+  margin-top:80px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:36px 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.stat{
+  padding:0 32px;
+  border-right:1px solid var(--line-soft);
+}
+.stat:last-child{border-right:none;}
+.stat .num{
+  font-family:var(--font-mono);
+  font-size:2.1rem;
+  color:var(--brass-light);
+  font-weight:500;
+}
+.stat .label{
+  font-size:0.78rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:rgba(245,241,232,0.55);
+  margin-top:6px;
+}
+
+/* --- Ledger card (key/value table on navy) ------------------------------- */
+
+.ledger-card{
+  background:var(--navy); color:var(--ivory);
+  padding:40px; border-radius:var(--radius);
+  border:1px solid var(--line);
+}
+.ledger-row{
+  display:flex; justify-content:space-between; gap:20px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line-soft);
+  font-family:var(--font-mono);
+  font-size:0.88rem;
+}
+.ledger-row:last-child{border-bottom:none;}
+.ledger-row .k{color:rgba(245,241,232,0.55);}
+.ledger-row .v{color:var(--brass-light); text-align:right;}
+
+/* --- Service ledger rows ------------------------------------------------- */
+
+.services-ledger{border-top:1px solid var(--line);}
+.service-row{
+  display:grid;
+  grid-template-columns:60px 1fr 1fr 40px;
+  align-items:center;
+  gap:24px;
+  padding:34px 0;
+  border-bottom:1px solid var(--line-soft);
+  cursor:default;
+  transition:background .3s ease;
+}
+.service-row:hover{background:rgba(184,147,95,0.05);}
+.service-row .no{font-family:var(--font-mono); color:var(--brass); font-size:0.85rem;}
+.service-row h4{font-size:1.25rem; font-weight:500;}
+.service-row .desc{color:var(--ivory-soft); font-size:0.92rem;}
+.service-row .arrow{
+  font-family:var(--font-mono); color:var(--brass);
+  font-size:1.2rem; transition:transform .3s ease;
+}
+.service-row:hover .arrow{transform:translateX(6px);}
+
+/* --- Team cards ---------------------------------------------------------- */
+
+.team-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:34px;}
+.team-card{
+  background:var(--navy); color:var(--ivory);
+  padding:36px 30px;
+  border:1px solid var(--line);
+  position:relative;
+}
+.team-avatar{
+  width:64px; height:64px; border-radius:50%;
+  background:linear-gradient(135deg, var(--brass), var(--emerald));
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:1.3rem; font-weight:600;
+  margin-bottom:22px; color:var(--navy);
+}
+.team-card h4{font-size:1.15rem; margin-bottom:4px;}
+.team-card .role{color:var(--brass-light); font-size:0.85rem; margin-bottom:14px;}
+.team-card .bio{color:var(--ivory-soft); font-size:0.88rem;}
+
+/* --- Testimonial cards --------------------------------------------------- */
+
+.testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:34px;}
+.testi-card{
+  border:1px solid var(--line-soft);
+  padding:34px;
+  position:relative;
+}
+.testi-card .quote-mark{
+  font-family:var(--font-display); font-size:3rem; color:var(--brass);
+  line-height:1; margin-bottom:8px; opacity:0.6;
+}
+.testi-card p{color:var(--ivory-muted); font-size:0.95rem; margin-bottom:22px;}
+.testi-card .who{
+  font-family:var(--font-mono); font-size:0.82rem; color:var(--brass-light);
+  border-top:1px solid var(--line-soft); padding-top:16px;
+}
+
+/* --- Forms (paper card on navy) ------------------------------------------
+   Reused by the enquiry form and, later, by sign-in / profile / checkout.
+   ------------------------------------------------------------------------- */
+
+.form-card{
+  background:var(--ivory); color:var(--charcoal);
+  padding:44px; border-radius:var(--radius);
+}
+.form-card h3{font-size:1.3rem; margin-bottom:6px;}
+.form-card .sub{color:rgba(42,42,40,0.55); font-size:0.88rem; margin-bottom:30px;}
+
+.form-group{margin-bottom:20px;}
+.form-group label{
+  display:block; font-size:0.78rem; text-transform:uppercase;
+  letter-spacing:0.06em; margin-bottom:8px; color:var(--ink-soft);
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%; padding:13px 14px;
+  border:1px solid var(--ink-border);
+  background:transparent;
+  font-family:var(--font-body); font-size:0.95rem;
+  border-radius:var(--radius);
+  color:var(--charcoal);
+  transition:border-color .25s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  outline:none; border-color:var(--brass);
+}
+.form-group textarea{resize:vertical; min-height:90px;}
+
+.form-submit{
+  width:100%; background:var(--navy); color:var(--ivory);
+  padding:16px; border:none; border-radius:var(--radius);
+  font-size:0.92rem; letter-spacing:0.04em; cursor:pointer;
+  transition:background .3s ease;
+  font-family:var(--font-body);
+}
+.form-submit:hover{background:var(--emerald);}
+.form-submit[disabled]{opacity:0.6; cursor:progress;}
+
+.form-note{font-size:0.78rem; color:var(--ink-faint); margin-top:14px; text-align:center;}
+
+.form-error{
+  margin-top:14px; padding:12px 14px;
+  border-left:2px solid #A5442F;
+  background:rgba(165,68,47,0.08);
+  font-size:0.85rem; color:#8C3A28;
+}
+.form-success{text-align:center; padding:40px 0;}
+.form-success .check{
+  width:56px; height:56px; border-radius:50%;
+  border:1px solid var(--brass); margin:0 auto 20px;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--brass); font-size:1.4rem;
+}
+
+/* --- Responsive ---------------------------------------------------------- */
+
+@media (max-width:900px){
+  .statement-strip{grid-template-columns:repeat(2,1fr);}
+  .stat{border-right:none; border-bottom:1px solid var(--line-soft); padding:16px 0;}
+
+  .team-grid, .testi-grid{grid-template-columns:1fr;}
+
+  .service-row{grid-template-columns:36px 1fr; row-gap:6px;}
+  .service-row .desc{grid-column:2/3;}
+  .service-row .arrow{display:none;}
+
+  .form-card{padding:32px 24px;}
+}

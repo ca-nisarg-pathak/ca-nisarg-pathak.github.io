@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Design tokens — the single source of truth for colour, type and spacing.
+   Change a value here and it propagates across every page.
+   ========================================================================== */
+
+:root{
+  /* Palette */
+  --navy:#0B1B2B;
+  --navy-2:#122536;
+  --ivory:#F5F1E8;
+  --brass:#B8935F;
+  --brass-light:#D4B384;
+  --emerald:#1A3B32;
+  --charcoal:#2A2A28;
+
+  /* Rules & dividers */
+  --line:rgba(184,147,95,0.28);
+  --line-soft:rgba(245,241,232,0.12);
+  --line-dark:rgba(42,42,40,0.12);
+
+  /* Ink on ivory backgrounds */
+  --ink-muted:rgba(42,42,40,0.75);
+  --ink-soft:rgba(42,42,40,0.6);
+  --ink-faint:rgba(42,42,40,0.5);
+  --ink-border:rgba(42,42,40,0.2);
+
+  /* Ink on navy backgrounds */
+  --ivory-muted:rgba(245,241,232,0.75);
+  --ivory-soft:rgba(245,241,232,0.6);
+  --ivory-faint:rgba(245,241,232,0.4);
+
+  /* Type */
+  --font-display:'Playfair Display',serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+
+  /* Metrics */
+  --radius:2px;
+  --gutter:5%;
+  --max-width:1200px;
+  --nav-height:70px;
+  --section-y:130px;
+  --section-y-sm:80px;
+}
