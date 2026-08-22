@@ -100,5 +100,6 @@ loading.
 - `components.css` contains `.team-*` and `.testi-*` styles that no markup
   currently uses — kept for the team and testimonials sections the design
   anticipates. Delete them if those sections aren't happening.
-- The hero figures (12 years, 300 clients, 15 team members, 99% on-time) are
-  placeholders from the original page; confirm before going live.
+- The hero figures are the firm's own stated numbers (1000+ clients served,
+  100% on-time filing), confirmed 22 Aug 2026 — not placeholders. The count-up
+  reads `data-target`, with an optional `data-suffix` for the "+".

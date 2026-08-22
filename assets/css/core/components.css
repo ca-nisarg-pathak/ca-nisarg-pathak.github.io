@@ -46,7 +46,9 @@
   border-bottom:1px solid var(--line);
   padding:36px 0;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  /* Two figures, held to a readable width so they sit together at the left
+     rather than drifting apart across the full strip. */
+  grid-template-columns:repeat(2, minmax(0, 260px));
 }
 .stat{
   padding:0 32px;
@@ -197,7 +199,8 @@
 
 @media (max-width:900px){
   .statement-strip{grid-template-columns:repeat(2,1fr);}
-  .stat{border-right:none; border-bottom:1px solid var(--line-soft); padding:16px 0;}
+  .stat{padding:0 20px;}
+  .stat:first-child{padding-left:0;}
 
   .team-grid, .testi-grid{grid-template-columns:1fr;}
 
