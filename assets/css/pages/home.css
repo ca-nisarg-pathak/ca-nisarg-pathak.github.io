@@ -83,26 +83,12 @@
 
 #testimonials{background:var(--navy);}
 
-/* --- Client portal teaser + enquiry form --------------------------------- */
+/* --- Booking ------------------------------------------------------------- */
 
-#portal{background:var(--navy-2);}
-
-.portal-grid{
-  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;
-}
-.portal-copy .tag{margin-bottom:16px;}
-.portal-copy h2{font-size:clamp(1.8rem,3vw,2.6rem); margin-bottom:22px;}
-.portal-copy p{color:rgba(245,241,232,0.65); margin-bottom:20px;}
-
-.portal-features{list-style:none; margin-top:28px;}
-.portal-features li{
-  padding:14px 0; border-bottom:1px solid var(--line-soft);
-  display:flex; gap:14px; font-size:0.92rem; color:var(--ivory-muted);
-}
-.portal-features li::before{content:'—'; color:var(--brass);}
+#enquire{background:var(--navy-2);}
 
 /* --- Responsive ---------------------------------------------------------- */
 
 @media (max-width:900px){
-  .about-grid, .portal-grid{grid-template-columns:1fr; gap:40px;}
+  .about-grid{grid-template-columns:1fr; gap:40px;}
 }

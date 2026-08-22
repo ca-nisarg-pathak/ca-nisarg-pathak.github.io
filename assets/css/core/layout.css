@@ -104,6 +104,14 @@ footer{
 }
 .footer-col a:hover{color:var(--brass-light);}
 
+.footer-col address{
+  font-style:normal;                 /* browsers italicise <address> */
+  margin-bottom:12px;
+  font-size:0.92rem;
+  line-height:1.7;
+}
+.footer-col address a{margin-bottom:0;}
+
 .footer-bottom{
   max-width:var(--max-width); margin:0 auto; padding-top:28px;
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;

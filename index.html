@@ -10,6 +10,26 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "name": "Nisarg Pathak & Co",
+  "description": "Chartered Accountants providing tax filing, GST compliance, audit, bookkeeping and financial advisory services.",
+  "url": "https://ca-nisarg-pathak.github.io/",
+  "telephone": "+91-97371-67553",
+  "email": "nisargpathakandcompany@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "210 Ramwadi Complex, Opp. Bhidbhanjan Mahadev Temple, Kalanala Road",
+    "addressLocality": "Bhavnagar",
+    "addressRegion": "Gujarat",
+    "postalCode": "364001",
+    "addressCountry": "IN"
+  }
+}
+</script>
+
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/pages/home.css">
 </head>
@@ -20,8 +40,8 @@
   <div class="nav-links" id="navLinks" data-nav-links>
     <a href="#about">About</a>
     <a href="#services">Services</a>
-    <a href="#portal">Client Portal</a>
-    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <a href="#enquire">Contact</a>
+    <a href="#enquire" class="nav-cta">Get in Touch</a>
   </div>
   <button class="hamburger" type="button" aria-label="Menu"
           aria-controls="navLinks" aria-expanded="false" data-nav-toggle>
@@ -38,7 +58,7 @@
     <h1 class="fade-up">Every figure tells a story. <em>We make sure it's the right one.</em></h1>
     <p class="lede fade-up">Nisarg Pathak &amp; Co. is a chartered accountancy practice built on precision, discretion, and clear financial thinking — for businesses and individuals who need more than just a number-cruncher.</p>
     <div class="hero-actions fade-up">
-      <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+      <a href="#enquire" class="btn-primary">Schedule a Consultation</a>
       <a href="#services" class="btn-ghost">Explore Our Services</a>
     </div>
   </div>
@@ -139,64 +159,28 @@
   </div>
 </section>
 
-<section id="portal">
-  <div class="section-inner portal-grid">
-    <div class="portal-copy reveal">
-      <span class="tag">Client &amp; Staff Access</span>
-      <h2>One place to exchange documents, securely.</h2>
-      <p>Clients can submit their details and documents directly through this site. Our staff can access submissions through the firm's internal system to process them promptly.</p>
-      <ul class="portal-features">
-        <li>Clients submit contact details, service needs, and files through the form</li>
-        <li>Submissions are routed straight to the firm's email for immediate action</li>
-        <li>Staff can be added as approvers/processors on the backend once connected to a CRM</li>
-        <li>All data transmitted over a secure, encrypted connection (HTTPS)</li>
-      </ul>
+<section id="enquire">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <span class="tag">Get in Touch</span>
+        <h2>Book a consultation.</h2>
+      </div>
+      <p>Pick a time that suits you and you'll get a confirmation and calendar invite straight away.</p>
     </div>
 
-    <div class="form-card reveal" id="formCard">
-      <div id="formDefault">
-        <h3>Request a Consultation</h3>
-        <p class="sub">Tell us a bit about what you need — we typically respond within one business day.</p>
-        <form id="clientForm" novalidate>
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="Your mobile number">
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
-          </div>
-          <div class="form-group">
-            <label for="service">Service Required</label>
-            <select id="service" name="service">
-              <option>Tax Filing &amp; Planning</option>
-              <option>GST Compliance</option>
-              <option>Audit</option>
-              <option>Bookkeeping</option>
-              <option>Company Incorporation</option>
-              <option>Financial Advisory</option>
-              <option>Payroll</option>
-              <option>NRI Taxation</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Briefly describe what you need help with..."></textarea>
-          </div>
-          <button type="submit" class="form-submit">Submit Request</button>
-          <p class="form-note">Your information is used only to respond to your enquiry.</p>
-          <p class="form-error" id="formError" role="alert" hidden></p>
-        </form>
-      </div>
-      <div class="form-success" id="formSuccess" hidden>
-        <div class="check" aria-hidden="true">✓</div>
-        <h3>Request received</h3>
-        <p class="sub">Thank you — our team will reach out to you shortly.</p>
+    <div class="booking reveal">
+      <div class="booking-embed" id="calendlyEmbed" data-state="idle"></div>
+
+      <p class="booking-fallback" id="calendlyFallback" hidden>
+        Online booking isn't available at the moment — please reach us directly using the options below.
+      </p>
+
+      <div class="booking-divider"><span>or reach us directly</span></div>
+      <div class="booking-actions">
+        <a class="btn-ghost" href="https://wa.me/919737167553" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn-ghost" href="tel:+919737167553">Call +91 97371 67553</a>
+        <a class="btn-ghost" href="mailto:nisargpathakandcompany@gmail.com?subject=Consultation%20enquiry">Email</a>
       </div>
     </div>
   </div>
@@ -212,13 +196,20 @@
       <h5>Contact</h5>
       <a href="tel:+919737167553">+91 97371 67553</a>
       <a href="mailto:nisargpathakandcompany@gmail.com">nisargpathakandcompany@gmail.com</a>
-      <p>Mon – Sat, 10:00 AM – 7:00 PM</p>
+      <address>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=210%20Ramwadi%20Complex%2C%20Opp.%20Bhidbhanjan%20Mahadev%20Temple%2C%20Kalanala%20Road%2C%20Bhavnagar%2C%20Gujarat%20364001" target="_blank" rel="noopener">
+          210 Ramwadi Complex,<br>
+          Opp. Bhidbhanjan Mahadev Temple,<br>
+          Kalanala Road, Bhavnagar,<br>
+          Gujarat 364001
+        </a>
+      </address>
     </div>
     <div class="footer-col">
       <h5>Firm</h5>
       <a href="#about">About Us</a>
       <a href="#services">Services</a>
-      <a href="#portal">Client Portal</a>
+      <a href="#enquire">Contact</a>
     </div>
   </div>
   <div class="footer-bottom">

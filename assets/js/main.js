@@ -1,16 +1,15 @@
 /**
  * Home page entry point.
  *
- * Each page gets its own entry module that composes the pieces it needs, e.g.
- * a future assets/js/portal.js would pull in nav + an auth guard + profile.
+ * Each page gets its own entry module that composes the pieces it needs.
  */
 
 import { initNav } from './modules/nav.js';
 import { initReveal } from './modules/reveal.js';
 import { initCounters } from './modules/counters.js';
-import { initContactForm } from './modules/contact-form.js';
+import { initCalendly } from './modules/calendly.js';
 
 initNav();
 initReveal();
 initCounters();
-initContactForm();
+initCalendly();

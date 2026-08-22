@@ -1,7 +1,12 @@
 # Nisarg Pathak & Co — website
 
-Static marketing site for the practice, structured so that a client portal
-(per-client profiles) and invoice payments can be added without a rewrite.
+Static marketing site for the practice, hosted on GitHub Pages at
+<https://ca-nisarg-pathak.github.io/>.
+
+There is no backend. No accounts, no database, no payments. Booking is an
+embedded Calendly calendar; everything else is a WhatsApp, phone or `mailto:`
+link. Nothing to deploy, no domain or DKIM setup, and no server holding client
+data.
 
 No build step, no dependencies. Plain HTML, CSS and ES modules.
 
@@ -30,19 +35,13 @@ assets/
     pages/
       home.css                  hero + the sections unique to index.html
   js/
-    config.js                   API URL, feature flags, publishable keys
+    config.js                   firm contact details, in one place
     main.js                     home page entry point
     modules/                    UI behaviour, one concern per file
       nav.js                    mobile nav toggle
       reveal.js                 scroll-reveal
       counters.js               count-up figures in the hero
-      contact-form.js           enquiry form submit
-    services/                   everything that talks to a backend
-      api.js                    fetch wrapper: auth header, JSON, error shape
-      auth.js                   sign-in / session for the client portal
-      profile.js                per-client profile, documents, engagements
-      payments.js               invoices and gateway checkout
-      enquiries.js              consultation enquiry submissions
+      calendly.js               lazy-loaded Calendly embed + fallbacks
 ```
 
 ### Conventions
@@ -50,47 +49,54 @@ assets/
 - **Styles:** anything used on more than one page goes in `core/`; page-specific
   styles go in `pages/<page>.css`. A page links `main.css` plus its own file.
   Never hard-code a colour — add a token.
-- **Scripts:** `modules/` touch the DOM, `services/` touch the network, and
-  they don't cross over. One entry point per page composes what it needs.
+- **Scripts:** `modules/` touch the DOM, one concern per file. One entry point
+  per page composes what it needs.
 - **Reusable markup hooks:** `data-*` attributes (`data-nav-toggle`,
   `data-counters`), so styling classes stay free to change.
 - Sections on the ivory background use `class="section--paper"`.
 
-## Adding the client portal
+## Booking
 
-1. Set `config.apiBaseUrl` and flip `config.features.clientPortal` to `true`.
-2. Add `pages/sign-in.html` and `pages/profile.html`, each linking
-   `assets/css/main.css` + a new `assets/css/pages/portal.css`, with
-   `assets/js/portal.js` as the entry point.
-3. `services/auth.js` and `services/profile.js` already define the endpoints
-   the backend needs to expose (`/auth/login`, `/auth/me`, `/me/profile`,
-   `/me/documents`, `/me/engagements`). Adjust there, not in the pages.
-4. The profile endpoints are deliberately scoped to `/me/...` — the server
-   resolves the client from the session token, never from a URL parameter, so
-   one client cannot read another's filings.
+Set your scheduling link in `assets/js/config.js`:
 
-Note: with no build step, nav and footer markup would be duplicated per page.
-Two or three pages is fine to duplicate; beyond that, either inject the shared
-chrome from a small module or introduce a static site generator.
+```js
+calendly: {
+  url: 'https://calendly.com/your-handle/consultation',
+},
+```
 
-## Adding payments
+That's the only change needed. While it's empty the embed is skipped entirely and
+the section falls back to the WhatsApp / Call / Email buttons, so the live site
+never shows an empty calendar frame.
 
-`services/payments.js` implements the browser half of the flow and documents
-the server half. The two rules that matter:
+`modules/calendly.js` handles three things worth knowing about:
 
-- The amount is always determined server-side from the invoice. Never send an
-  amount from the browser.
-- The gateway **webhook** is what marks an invoice paid. The browser callback
-  is for UI feedback only — it can be forged.
+- **Lazy loading.** Calendly's widget is a ~100KB third-party script. It's only
+  fetched once the booking section is within 400px of the viewport, so visitors
+  who never scroll that far don't pay for it.
+- **Failure fallback.** If the script is blocked by an ad blocker, or Calendly is
+  down, or the configured URL is malformed, the embed is hidden and the
+  direct-contact buttons take over. Booking is the primary way to reach the firm,
+  so it must not be able to become a dead end.
+- **Theming.** The embed URL gets `background_color`, `text_color` and
+  `primary_color` appended to match the site palette, plus `hide_gdpr_banner=1`.
+  Whether Calendly honours the colour parameters depends on the plan; the layout
+  works either way.
 
-Set `config.payments.provider`, `config.payments.publicKey`, and flip
-`config.features.payments`. The gateway secret stays on the server.
+Two Calendly plan limits to keep in mind: the free tier allows **one event type**,
+so there's a single consultation link rather than one per service, and "Powered by
+Calendly" branding stays on free.
+
+**Height is driven by Calendly, not guessed.** The injected iframe has no
+dimensions of its own — left alone it collapses to the HTML default of 150px and
+the calendar is invisible below the header. Calendly posts a
+`calendly.page_height` message whenever its view changes, and `calendly.js`
+resizes the container to match (origin-checked, so a hostile frame can't drive
+our layout). The 700px `min-height` in CSS is only the placeholder shown while
+loading.
 
 ## Still to wire up
 
-- The enquiry form has no backend yet. Until `config.apiBaseUrl` is set it
-  shows the confirmation panel locally and logs the payload to the console;
-  nothing is sent anywhere.
 - `components.css` contains `.team-*` and `.testi-*` styles that no markup
   currently uses — kept for the team and testimonials sections the design
   anticipates. Delete them if those sections aren't happening.
