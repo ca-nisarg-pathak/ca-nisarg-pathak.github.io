@@ -9,7 +9,7 @@
 export const config = {
   firm: {
     name: 'Nisarg Pathak & Co',
-    email: 'nisargpathakandcompany@gmail.com',
+    email: 'canisargpathak@gmail.com',
     phoneDisplay: '+91 97371 67553',
     phoneDial: '+919737167553',
     whatsapp: '919737167553',            // digits only, for wa.me links
