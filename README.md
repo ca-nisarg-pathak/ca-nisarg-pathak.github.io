@@ -34,6 +34,8 @@ assets/
       components.css            buttons, cards, forms, ledger rows, stat strip
     pages/
       home.css                  hero + the sections unique to index.html
+  img/
+    ca-india-logo.png           ICAI CA India mark, shown in the footer
   js/
     config.js                   firm contact details, in one place
     main.js                     home page entry point

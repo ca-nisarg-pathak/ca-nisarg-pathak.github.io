@@ -12,6 +12,7 @@
   --brass-light:#D4B384;
   --emerald:#1A3B32;
   --charcoal:#2A2A28;
+  --white:#FFFFFF;          /* only for the CA logo chip, which must match the mark's own background */
 
   /* Rules & dividers */
   --line:rgba(184,147,95,0.28);
